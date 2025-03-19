@@ -28,7 +28,7 @@ icon_files = {
     "crown": "variation_mineral_bm.png",
     "accessory": "variation_mineral_acc.png",
     "talisman_hb": "etc_high_gem_black_i00.png",
-    "box_1000": "etc_high_gem_black_i00.png",
+    "box_1000": "bm_lcoin_box_i00.png",
     "box_800": "bm_sayhas_talisman_box.png",
     "box_40000": "bm_sayhas_talisman_box_40k.png"
 }
