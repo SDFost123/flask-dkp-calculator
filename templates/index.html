@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор ДКП</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Калькулятор ДКП</h1>
+        <form method="POST">
+            <div class="input-group">
+                <img src="{{ url_for('static', filename='Icons/bm_ensoul_stone_PvP_empty.png') }}" alt="X" class="icon">
+                <label>Фрагменты бенира (5 ДКП):</label>
+                <input type="number" name="benir" min="0">
+            </div>
+            <div class="input-group">
+                <img src="{{ url_for('static', filename='Icons/variation_mineral_wp.png') }}" alt="X" class="icon">
+                <label>ЛС на оружие (2 ДКП):</label>
+                <input type="number" name="ls_weapon" min="0">
+            </div>
+            <div class="input-group">
+                <img src="{{ url_for('static', filename='Icons/variation_mineral_am.png') }}" alt="X" class="icon">
+                <label>ЛС на армор (5 ДКП):</label>
+                <input type="number" name="ls_armor" min="0">
+            </div>
+            <div class="input-group">
+                <img src="{{ url_for('static', filename='Icons/variation_mineral_bm.png') }}" alt="X" class="icon">
+                <label>ЛС на венец (3 ДКП):</label>
+                <input type="number" name="ls_crown" min="0">
+            </div>
+            <button type="submit">Рассчитать</button>
+        </form>
+
+        <div class="results">
+            <p>{{ results.benir }}</p>
+            <p>{{ results.weapon }}</p>
+            <p>{{ results.armor }}</p>
+            <p>{{ results.crown }}</p>
+            <p class="total">{{ results.total }}</p>
+            <p id="sanya" class="sanya">{{ results.sanya }}</p>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
