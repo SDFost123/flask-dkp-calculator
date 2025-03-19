@@ -49,6 +49,13 @@ input[type="number"] {
     border-radius: 3px;
 }
 
+input[type="number"]:disabled {
+    background-color: #333;
+    color: #666;
+    border-color: #666;
+    cursor: not-allowed;
+}
+
 button {
     background-color: #00b3a0;
     color: #000000;
@@ -78,8 +85,4 @@ button:hover {
     color: #00b3a0;
     font-size: 1.5em;
     font-weight: bold;
-}
-
-.sanya {
-    color: #ff3333;
 }

@@ -12,23 +12,48 @@
         <form method="POST">
             <div class="input-group">
                 <img src="{{ url_for('static', filename='Icons/bm_ensoul_stone_PvP_empty.png') }}" alt="X" class="icon">
-                <label>Фрагменты бенира (5 ДКП):</label>
-                <input type="number" name="benir" min="0">
+                <label>Фрагменты Бенира (5 ДКП):</label>
+                <input type="number" name="benir" min="0" {% if not item_status.benir %}disabled{% endif %}>
             </div>
             <div class="input-group">
                 <img src="{{ url_for('static', filename='Icons/variation_mineral_wp.png') }}" alt="X" class="icon">
-                <label>ЛС на оружие (2 ДКП):</label>
-                <input type="number" name="ls_weapon" min="0">
+                <label>ЛС на Оружие (2 ДКП):</label>
+                <input type="number" name="ls_weapon" min="0" {% if not item_status.weapon %}disabled{% endif %}>
             </div>
             <div class="input-group">
                 <img src="{{ url_for('static', filename='Icons/variation_mineral_am.png') }}" alt="X" class="icon">
-                <label>ЛС на армор (5 ДКП):</label>
-                <input type="number" name="ls_armor" min="0">
+                <label>ЛС на Армор (5 ДКП):</label>
+                <input type="number" name="ls_armor" min="0" {% if not item_status.armor %}disabled{% endif %}>
             </div>
             <div class="input-group">
                 <img src="{{ url_for('static', filename='Icons/variation_mineral_bm.png') }}" alt="X" class="icon">
-                <label>ЛС на венец (3 ДКП):</label>
-                <input type="number" name="ls_crown" min="0">
+                <label>ЛС на Венец (3 ДКП):</label>
+                <input type="number" name="ls_crown" min="0" {% if not item_status.crown %}disabled{% endif %}>
+            </div>
+            <div class="input-group">
+                <img src="{{ url_for('static', filename='Icons/variation_mineral_acc.png') }}" alt="X" class="icon">
+                <label>ЛС на Бижу (5 ДКП):</label>
+                <input type="number" name="ls_accessory" min="0" {% if not item_status.accessory %}disabled{% endif %}>
+            </div>
+            <div class="input-group">
+                <img src="{{ url_for('static', filename='Icons/etc_high_gem_black_i00.png') }}" alt="X" class="icon">
+                <label>Фрагменты на Талисман ХБ (75 ДКП):</label>
+                <input type="number" name="talisman_hb" min="0" {% if not item_status.talisman_hb %}disabled{% endif %}>
+            </div>
+            <div class="input-group">
+                <img src="{{ url_for('static', filename='Icons/etc_high_gem_black_i00.png') }}" alt="X" class="icon">
+                <label>Коробки Л 1000 (25 ДКП):</label>
+                <input type="number" name="box_1000" min="0" {% if not item_status.box_1000 %}disabled{% endif %}>
+            </div>
+            <div class="input-group">
+                <img src="{{ url_for('static', filename='Icons/bm_sayhas_talisman_box.png') }}" alt="X" class="icon">
+                <label>Коробки Л 800 (20 ДКП):</label>
+                <input type="number" name="box_800" min="0" {% if not item_status.box_800 %}disabled{% endif %}>
+            </div>
+            <div class="input-group">
+                <img src="{{ url_for('static', filename='Icons/bm_sayhas_talisman_box_40k.png') }}" alt="X" class="icon">
+                <label>Коробки Л 40000 (1000 ДКП):</label>
+                <input type="number" name="box_40000" min="0" {% if not item_status.box_40000 %}disabled{% endif %}>
             </div>
             <button type="submit">Рассчитать</button>
         </form>
@@ -38,10 +63,13 @@
             <p>{{ results.weapon }}</p>
             <p>{{ results.armor }}</p>
             <p>{{ results.crown }}</p>
+            <p>{{ results.accessory }}</p>
+            <p>{{ results.talisman_hb }}</p>
+            <p>{{ results.box_1000 }}</p>
+            <p>{{ results.box_800 }}</p>
+            <p>{{ results.box_40000 }}</p>
             <p class="total">{{ results.total }}</p>
-            <p id="sanya" class="sanya">{{ results.sanya }}</p>
         </div>
     </div>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
