@@ -36,36 +36,33 @@ def index():
             dkp_crown = ls_crown * 3
             total_dkp = dkp_benir + dkp_weapon + dkp_armor + dkp_crown
 
-            # Результаты
+            # Результаты с количеством в скобках
             results = {
-                "benir": f"Фрагменты бенира: {dkp_benir} ДКП",
-                "weapon": f"ЛС на оружие: {dkp_weapon} ДКП",
-                "armor": f"ЛС на армор: {dkp_armor} ДКП",
-                "crown": f"ЛС на венец: {dkp_crown} ДКП",
-                "total": f"Итого: {total_dkp} ДКП",
-                "sanya": "Саня пидор"  # Текст, который исчезнет через 1 секунду
+                "benir": f"Фрагменты бенира: {dkp_benir} ДКП ({benir} шт.)",
+                "weapon": f"ЛС на оружие: {dkp_weapon} ДКП ({ls_weapon} шт.)",
+                "armor": f"ЛС на армор: {dkp_armor} ДКП ({ls_armor} шт.)",
+                "crown": f"ЛС на венец: {dkp_crown} ДКП ({ls_crown} шт.)",
+                "total": f"Итого: {total_dkp} ДКП"
             }
         except ValueError:
             results = {
-                "benir": "Фрагменты бенира: 0 ДКП",
-                "weapon": "ЛС на оружие: 0 ДКП",
-                "armor": "ЛС на армор: 0 ДКП",
-                "crown": "ЛС на венец: 0 ДКП",
-                "total": "Ошибка: введите числа!",
-                "sanya": ""
+                "benir": "Фрагменты бенира: 0 ДКП (0 шт.)",
+                "weapon": "ЛС на оружие: 0 ДКП (0 шт.)",
+                "armor": "ЛС на армор: 0 ДКП (0 шт.)",
+                "crown": "ЛС на венец: 0 ДКП (0 шт.)",
+                "total": "Ошибка: введите числа!"
             }
         return render_template("index.html", results=results)
 
     # При GET-запросе показываем пустую форму
     results = {
-        "benir": "Фрагменты бенира: 0 ДКП",
-        "weapon": "ЛС на оружие: 0 ДКП",
-        "armor": "ЛС на армор: 0 ДКП",
-        "crown": "ЛС на венец: 0 ДКП",
-        "total": "Итого: 0 ДКП",
-        "sanya": ""
+        "benir": "Фрагменты бенира: 0 ДКП (0 шт.)",
+        "weapon": "ЛС на оружие: 0 ДКП (0 шт.)",
+        "armor": "ЛС на армор: 0 ДКП (0 шт.)",
+        "crown": "ЛС на венец: 0 ДКП (0 шт.)",
+        "total": "Итого: 0 ДКП"
     }
     return render_template("index.html", results=results)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
