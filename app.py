@@ -55,7 +55,7 @@ def index():
             # Расчет ДКП
             dkp_benir = benir * 5 if item_status["benir"] else 0
             dkp_weapon = ls_weapon * 2 if item_status["weapon"] else 0
-            dkp_armor = ls_armor * 5 if item_status["armor"] else 0
+            dkp_armor = ls_armor * 3 if item_status["armor"] else 0
             dkp_crown = ls_crown * 3 if item_status["crown"] else 0
             dkp_accessory = ls_accessory * 5 if item_status["accessory"] else 0
             dkp_talisman_hb = talisman_hb * 75 if item_status["talisman_hb"] else 0
