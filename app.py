@@ -10,14 +10,17 @@ icons_dir = os.path.join(current_dir, "static", "Icons")
 # Статус предметов (True - активен, False - недействителен)
 item_status = {
     "benir": True,
-    "weapon": True,
-    "armor": True,
-    "crown": True,
+    "weapon": False,
+    "armor": False,
+    "crown": False,
     "accessory": False,  # ЛС на Бижу - недействителен
     "talisman_hb": True,
     "box_1000": True,
     "box_800": True,
-    "box_40000": True
+    "box_40000": True,
+    "sa_weapon": True,  # СА на Оружие
+    "sa_armor": True,   # СА на Броню
+    "hardin": True      # Хардин
 }
 
 # Проверка наличия иконок
@@ -30,7 +33,10 @@ icon_files = {
     "talisman_hb": "etc_high_gem_black_i00.png",
     "box_1000": "bm_lcoin_box_i00.png",
     "box_800": "bm_sayhas_talisman_box.png",
-    "box_40000": "bm_sayhas_talisman_box_40k.png"
+    "box_40000": "bm_sayhas_talisman_box_40k.png",
+    "sa_weapon": "aden_rune_i01.png",         # СА на Оружие
+    "sa_armor": "aden_rune_am_i01.png",       # СА на Броню
+    "hardin": "aden_rune_high_i01.png"        # Хардин
 }
 
 for key, icon_file in icon_files.items():
@@ -51,6 +57,9 @@ def index():
             box_1000 = int(request.form.get("box_1000", 0)) if request.form.get("box_1000") and item_status["box_1000"] else 0
             box_800 = int(request.form.get("box_800", 0)) if request.form.get("box_800") and item_status["box_800"] else 0
             box_40000 = int(request.form.get("box_40000", 0)) if request.form.get("box_40000") and item_status["box_40000"] else 0
+            sa_weapon = int(request.form.get("sa_weapon", 0)) if request.form.get("sa_weapon") and item_status["sa_weapon"] else 0
+            sa_armor = int(request.form.get("sa_armor", 0)) if request.form.get("sa_armor") and item_status["sa_armor"] else 0
+            hardin = int(request.form.get("hardin", 0)) if request.form.get("hardin") and item_status["hardin"] else 0
 
             # Расчет ДКП
             dkp_benir = benir * 5 if item_status["benir"] else 0
@@ -62,10 +71,14 @@ def index():
             dkp_box_1000 = box_1000 * 25 if item_status["box_1000"] else 0
             dkp_box_800 = box_800 * 20 if item_status["box_800"] else 0
             dkp_box_40000 = box_40000 * 1000 if item_status["box_40000"] else 0
+            dkp_sa_weapon = sa_weapon * 2 if item_status["sa_weapon"] else 0
+            dkp_sa_armor = sa_armor * 5 if item_status["sa_armor"] else 0
+            dkp_hardin = hardin * 10 if item_status["hardin"] else 0
 
             total_dkp = (dkp_benir + dkp_weapon + dkp_armor + dkp_crown +
                          dkp_accessory + dkp_talisman_hb + dkp_box_1000 +
-                         dkp_box_800 + dkp_box_40000)
+                         dkp_box_800 + dkp_box_40000 + dkp_sa_weapon +
+                         dkp_sa_armor + dkp_hardin)
 
             # Результаты с количеством в скобках
             results = {
@@ -78,6 +91,9 @@ def index():
                 "box_1000": f"Коробки Л 1000: {dkp_box_1000} ДКП ({box_1000} шт.)",
                 "box_800": f"Коробки Л 800: {dkp_box_800} ДКП ({box_800} шт.)",
                 "box_40000": f"Коробки Л 40000: {dkp_box_40000} ДКП ({box_40000} шт.)",
+                "sa_weapon": f"СА на Оружие: {dkp_sa_weapon} ДКП ({sa_weapon} шт.)",
+                "sa_armor": f"СА на Броню: {dkp_sa_armor} ДКП ({sa_armor} шт.)",
+                "hardin": f"Хардин: {dkp_hardin} ДКП ({hardin} шт.)",
                 "total": f"Итого: {total_dkp} ДКП"
             }
         except ValueError:
@@ -91,6 +107,9 @@ def index():
                 "box_1000": "Коробки Л 1000: 0 ДКП (0 шт.)",
                 "box_800": "Коробки Л 800: 0 ДКП (0 шт.)",
                 "box_40000": "Коробки Л 40000: 0 ДКП (0 шт.)",
+                "sa_weapon": "СА на Оружие: 0 ДКП (0 шт.)",
+                "sa_armor": "СА на Броню: 0 ДКП (0 шт.)",
+                "hardin": "Хардин: 0 ДКП (0 шт.)",
                 "total": "Ошибка: введите числа!"
             }
         return render_template("index.html", results=results, item_status=item_status)
@@ -106,6 +125,9 @@ def index():
         "box_1000": "Коробки Л 1000: 0 ДКП (0 шт.)",
         "box_800": "Коробки Л 800: 0 ДКП (0 шт.)",
         "box_40000": "Коробки Л 40000: 0 ДКП (0 шт.)",
+        "sa_weapon": "СА на Оружие: 0 ДКП (0 шт.)",
+        "sa_armor": "СА на Броню: 0 ДКП (0 шт.)",
+        "hardin": "Хардин: 0 ДКП (0 шт.)",
         "total": "Итого: 0 ДКП"
     }
     return render_template("index.html", results=results, item_status=item_status)

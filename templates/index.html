@@ -55,6 +55,21 @@
                 <label>Коробки Л 40000 (1000 ДКП):</label>
                 <input type="number" name="box_40000" min="0" {% if not item_status.box_40000 %}disabled{% endif %}>
             </div>
+            <div class="input-group">
+                <img src="{{ url_for('static', filename='Icons/aden_rune_i01.png') }}" alt="X" class="icon">
+                <label>СА на Оружие (2 ДКП):</label>
+                <input type="number" name="sa_weapon" min="0" {% if not item_status.sa_weapon %}disabled{% endif %}>
+            </div>
+            <div class="input-group">
+                <img src="{{ url_for('static', filename='Icons/aden_rune_am_i01.png') }}" alt="X" class="icon">
+                <label>СА на Броню (5 ДКП):</label>
+                <input type="number" name="sa_armor" min="0" {% if not item_status.sa_armor %}disabled{% endif %}>
+            </div>
+            <div class="input-group">
+                <img src="{{ url_for('static', filename='Icons/aden_rune_high_i01.png') }}" alt="X" class="icon">
+                <label>Хардин (10 ДКП):</label>
+                <input type="number" name="hardin" min="0" {% if not item_status.hardin %}disabled{% endif %}>
+            </div>
             <button type="submit">Рассчитать</button>
         </form>
 
@@ -68,8 +83,11 @@
             <p>{{ results.box_1000 }}</p>
             <p>{{ results.box_800 }}</p>
             <p>{{ results.box_40000 }}</p>
+            <p>{{ results.sa_weapon }}</p>
+            <p>{{ results.sa_armor }}</p>
+            <p>{{ results.hardin }}</p>
             <p class="total">{{ results.total }}</p>
         </div>
     </div>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9236904e0884d9a5',t:'MTc0MjQ4NzkwNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
